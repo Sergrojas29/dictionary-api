@@ -1,0 +1,22 @@
+service: dictionary-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  # environment:
+    # MONGODB_URI: ${env:MONGODB_URI}
+
+functions:
+  get-references:
+    handler: src/getReferences.handler
+    events:
+      - http:
+          path: /references
+          method: get
+  get-dictionaries:
+    handler: src/getDictionaries.handler
+    events:
+      - http:
+          path: /dictionaries
+          method: get
